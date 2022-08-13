@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Whatsapp</title>
-    <link rel="stylesheet" href="/style.css" />
-  </head>
 
-  <body>
-    <section class="chat__section">
-      <div class="brand">
-        <img height="40" src="/wassup.png" alt="" />
-        <h1>Chat app</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SocketIo Chat APP</title>
+  <link rel="stylesheet" href="/style.css" />
+  <meta name="description" content="SocketIo Chat App" />
+  <meta name="keywords" content="SocketIo Chat App" />
+</head>
+
+<body>
+  <section class="chat__section">
+    <div class="brand">
+      <img height="40" src="/download.png" alt="" />
+      <h1>Chat app</h1>
+    </div>
+    <div class="message__area"></div>
+    <div class="message__sent">
+      <textarea id="textarea" cols="30" rows="1" placeholder="Write a message..." required></textarea>
+      <div class="send__button">
+        <button id="send">Send</button>
       </div>
-      <div class="message__area"></div>
-      <div>
-        <textarea
-          id="textarea"
-          cols="30"
-          rows="1"
-          placeholder="Write a message..."
-        ></textarea>
-      </div>
-    </section>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/client.js"></script>
-  </body>
+    </div>
+  </section>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/client.js"></script>
+</body>
+
 </html>

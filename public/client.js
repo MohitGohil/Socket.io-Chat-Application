@@ -1,6 +1,7 @@
 const socket = io();
 let name;
 let textarea = document.querySelector("#textarea");
+let sendButton = document.querySelector("#send");
 let messageArea = document.querySelector(".message__area");
 
 // name prompt
@@ -9,18 +10,30 @@ do {
 } while (!name);
 
 // message from textarea
-textarea.addEventListener("keyup", (e) => {
-  if (e.key === "Enter") {
-    sendMessage(e.target.value);
+textarea.addEventListener("keydown", (e) => {
+  if (e.keyCode === 13 && !e.shiftKey) {
+    e.preventDefault();
+    if (e.key === "Enter") {
+      sendMessage(e.target.value);
+    }
   }
+});
+
+// sent message with sendButton
+sendButton.addEventListener("click", (e) => {
+  sendMessage(textarea.value);
 });
 
 // Message with user name
 function sendMessage(message) {
   let msg = {
+    socketId: socket.id,
     user: name,
     message: message.trim(),
+    currentTime: new Date().toLocaleString(),
   };
+  if (msg.message === "") return alert("Please enter a message");
+
   // display's message
   appendMessage(msg, "outgoing");
   textarea.value = "";
@@ -39,6 +52,8 @@ function appendMessage(msg, type) {
   let markup = `
         <h4>${msg.user}</h4>
         <p>${msg.message}</p>
+        <br>
+        <small><i>${msg.currentTime}</i></small>
         `;
   mainDiv.innerHTML = markup;
   messageArea.appendChild(mainDiv);

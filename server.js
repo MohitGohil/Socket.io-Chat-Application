@@ -12,12 +12,19 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  console.log("Server connected..");
+  console.log(`A user connected with id: ${socket.id}`);
 
   // broadcasting server
   socket.on("message", (msg) => {
     socket.broadcast.emit("message", msg);
+    console.log(msg);
   });
-});
+})
+  .on("disconnect", () => {
+    console.log("Server disconnected");
+  })
+  .on("error", (err) => {
+    console.log(err);
+  });
 
 http.listen(PORT, () => console.log(`Listening on port ${PORT}`));

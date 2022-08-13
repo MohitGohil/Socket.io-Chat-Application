@@ -40,13 +40,42 @@ section.chat__section {
   overflow-y: auto;
   padding-top: 40px;
 }
+
 textarea {
-  width: 100%;
+  width: 90%;
   border: none;
   padding: 20px;
   font-size: 16px;
   outline: none;
+  border-radius: 10px;
   background: #fbfbfb;
+}
+
+small {
+  font-size: 12px;
+}
+
+button {
+  width: 10%;
+  background: #f1f1f1;
+  border: none;
+  padding: 10px;
+  color: #444;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.message__sent {
+  display: flex;
+  align-self: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #f1f1f1;
+  padding: 10px;
+  max-width: 100%;
 }
 
 .message {
